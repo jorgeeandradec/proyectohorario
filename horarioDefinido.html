@@ -4,38 +4,16 @@
 <head>
 	<title>horario definido</title>
 	<meta charset="utf-8">
-	<script type="text/javascript">
-		var paramstr = window.location.search.substr(1);
-		var paramarr = paramstr.split("&");
-		var params ={};
-
-		for(var i=0; i < paramarr.length; i++){
-			var tmparr = paramarr[i].split("=");
-			params[tmparr[0]] = tmparr[1];
-		}
-
-		
-	</script>
-	<!--<script type="text/javascript" src="js/crearHorario.js"></script>-->
+	<script type="text/javascript" src="js/recibirDatos.js"></script>
+	<script type="text/javascript" src="js/utf8.js"></script>
+	
 </head>
 <body>
-		<script type="text/javascript">			
-			if(params['nombres']){
-				//document.write(params['nombres']);
-				//document.write(params['apellidos']);
-				var nombres = params['nombres'];
-				nombres = nombres.replace('+',' ');
-				var apellidos = params['apellidos'];
-				apellidos = apellidos.replace('+', " ");
-				document.write(nombres);
-				document.write(" "+apellidos);
-		
-		}else{
-			document.write("No hay nada");
-		}
-		
-		</script>
+
 	<header>
+	<script type="text/javascript">
+	recibirDatos();
+	</script>
 
 		
 	</header>
