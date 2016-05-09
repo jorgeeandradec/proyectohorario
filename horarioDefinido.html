@@ -5,15 +5,22 @@
 	<title>horario definido</title>
 	<meta charset="utf-8">
 	<script type="text/javascript" src="js/recibirDatos.js"></script>
-	<script type="text/javascript" src="js/utf8.js"></script>
+	<script type="text/javascript" src="js/canvas.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 	
 </head>
-<body>
+<body id="horarioDefinido">
 
 	<header>
 	<script type="text/javascript">
-	recibirDatos();
+	recibirDatos();	
 	</script>
+
+	<canvas id="grilla" width="800" height="500"></canvas>
+	<script type="text/javascript">
+	iniciar();
+	</script>
+
 
 		
 	</header>

@@ -33,4 +33,10 @@ if(params['documento']){
 }else{
 	document.write("No hay nada");
 }
+
+}
+
+function dibujar(){
+	
+
 }

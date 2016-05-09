@@ -5,3 +5,10 @@ div{
 .datosPersonales{
 	display: block;
 }
+canvas{
+	border: 2px solid red;
+
+}
+#horarioDefinido{
+	text-align: center;
+}
