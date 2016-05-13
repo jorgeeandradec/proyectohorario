@@ -50,7 +50,7 @@ var celdaDomingo = {
 
 var dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
 var horas = ["01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00",
- "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00",
+ "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00",
  "20:00", "21:00", "22:00", "23:00", "24:00" ];
 
 // RECIBIENDO DATOS DESDE EL FORMULARIO
@@ -194,13 +194,6 @@ for(i=1; i < 26; i++){
 for(i=1; i <= 9; i++){
 	dibujarCeldas(i, 0);
 
-	// contexto.beginPath();
-	// contexto.fillStyle="green";
-	// contexto.font = "12px sans-serif";	
-	// contexto.textBaseline = "middle";
-	// contexto.fillText(dias[i-1], x, (y + 20));
-	// contexto.closePath();
-
 }
 
 
@@ -232,6 +225,30 @@ function dibujarCeldas(x, y){
 			contexto.lineTo(x * 100, 500);
 			contexto.stroke;
 			contexto.strokeStyle = "#cc0000";
+
+if (x > 0) {
+//	contexto.beginPath();
+	contexto.fillStyle="green";
+	contexto.font = "12px sans-serif";	
+	contexto.textBaseline = "middle";
+	contexto.fillText(dias[x-1], (x*100)+20, 10);
+//	contexto.closePath();
+//	alert("Día: "+dias[y-1]);
+			
+}
+
+if (y > 1) {
+//	contexto.beginPath();
+	contexto.fillStyle="green";
+	contexto.font = "12px sans-serif";	
+	contexto.textBaseline = "middle";
+	contexto.fillText(horas[y-2], 30, (y*20)-10);
+//	contexto.closePath();
+//	alert("Día: "+dias[y-1]);
+			
+}
+
+
 }
 
 
