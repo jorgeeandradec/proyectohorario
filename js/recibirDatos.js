@@ -181,14 +181,7 @@ contexto = canvas.getContext("2d");
 //Dibujando filas
 for(i=1; i < 26; i++){
 	dibujarCeldas(0, i);
-	
-
-
-
 }
-
-
-
 
 //Dibujando Columnas
 for(i=1; i <= 9; i++){
