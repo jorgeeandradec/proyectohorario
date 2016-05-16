@@ -57,6 +57,8 @@ var dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Do
 var horas = ["01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00",
  "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00",
  "20:00", "21:00", "22:00", "23:00", "24:00" ];
+var horasInicio;
+var horasFin;
 
 // RECIBIENDO DATOS DESDE EL FORMULARIO
 function recibirDatos(){
@@ -153,14 +155,17 @@ if(params['documento']){
 	celdaDomingo.y = inicioDomingo * altoCelda;
 	celdaDomingo.alto = (finDomingo - inicioDomingo) * altoCelda;
 
-	document.write(tipoDocumento);
-	document.write(documento);
-	document.write(nombres);
-	document.write(" "+apellidos);
-	document.write(email);
-	document.write(" Miércoles Desde las "+inicioMiercoles+" hasta las "+finMiercoles+ " ancho "+
-		celdaMiercoles.ancho+" alto "+celdaMiercoles.alto);
+horasInicio = [inicioLunes, inicioMartes, inicioMiercoles, inicioJueves, inicioViernes, 
+inicioSabado, inicioDomingo];
+horasFin = [finLunes, finMartes, finMiercoles, finJueves, finViernes, finSabado, finDomingo];
 
+validarDatos();
+
+	document.getElementById("nombreDefinido").innerHTML = "Horario Semanal de "+nombres+" "+apellidos;
+	document.getElementById("correoDefinido").innerHTML = "Correo electrónico: "+email;
+	document.getElementById("documentoDefinido").innerHTML = tipoDocumento+" Número "+documento;
+	document.getElementById("fechaActual").innerHTML = "Fecha: " + Date();
+	
 
 		
 }else{
@@ -169,14 +174,17 @@ if(params['documento']){
 
 }
 
+function validarDatos(){
+	for(i=0; i <= horasInicio.length; i++){		
+		
+		if (horasFin[i]-horasInicio[i]<0) {
+			alert("La hora de cierre del "+ dias[i] + " es menor, vuelve a seleccionarla");
+ 	 	window.history.back();
+		}
+	}
+}
+
 function iniciarCanvas(){
-
-
-if (celdaLunes.horasDia <= 0) {
-	//Validar horas
-compararHora(celdaLunes.nombre, celdaLunes.horasDia);
-
-}else{
 
 
 canvas = document.getElementById("grilla");
@@ -209,7 +217,7 @@ definirCelda(celdaSabado.x, celdaSabado.y, celdaSabado.ancho, celdaSabado.alto);
 definirCelda(celdaDomingo.x, celdaDomingo.y, celdaDomingo.ancho, celdaDomingo.alto);
 
 
-}
+
 
 }
 
@@ -227,18 +235,18 @@ function dibujarCeldas(x, y){
 			contexto.moveTo(0, y * altoCelda);
 			contexto.lineTo(anchoCalendario, y * altoCelda);
 			contexto.stroke();
-			contexto.strokeStyle = "#cc0000";
+			contexto.strokeStyle = "#ff8a00";
 			
 
 			contexto.moveTo(x * anchoCelda, 0);
 			contexto.lineTo(x * anchoCelda, altoCalendario);
 			contexto.stroke;
-			contexto.strokeStyle = "#cc0000";
+			contexto.strokeStyle = "#ff8a00";
 
 if (x > 0) {
 //	contexto.beginPath();
 	contexto.fillStyle="green";
-	contexto.font = "12px sans-serif";	
+	contexto.font = "bold 12px sans-serif";	
 	contexto.textBaseline = "middle";
 	contexto.fillText(dias[x-1], (x*anchoCelda)+altoCelda, 10);
 //	contexto.closePath();
@@ -249,7 +257,7 @@ if (x > 0) {
 if (y > 1) {
 //	contexto.beginPath();
 	contexto.fillStyle="green";
-	contexto.font = "12px sans-serif";	
+	contexto.font = "bold 12px sans-serif";	
 	contexto.textBaseline = "middle";
 	contexto.fillText(horas[y-2], 30, (y*altoCelda)-10);
 //	contexto.closePath();
@@ -266,7 +274,7 @@ function definirCelda(x, y, ancho, alto){
 	//alert("ingresó a definirCelda "+x+", "+y+", "+ancho+", "+alto);
 	contexto.beginPath(); 	
 	contexto.moveTo(x,y);
-	contexto.fillStyle="green";
+	contexto.fillStyle="#55A900";
 	contexto.fillRect(x,y,ancho, alto);		
 	contexto.stroke;
 	contexto.closePath();
@@ -276,26 +284,12 @@ function definirCelda(x, y, ancho, alto){
 	contexto.fillStyle="white";
 	contexto.font = "12px sans-serif";	
 	contexto.textBaseline = "middle";
-	contexto.fillText(frase, x, (y + altoCelda));
+	contexto.fillText(frase, x + 10, (y + 10));
+	// contexto.fillText(frase, x + 10, (y + altoCelda));
 	contexto.closePath();
 	
 
 
 }
-
-
-
- function compararHora(nombre, horasDia){
- 	
- 	 if (horasDia <= 0 ) {
- 	 	
- 	 	alert("La hora de cierre del "+ nombre + " es menor, vuelve a seleccionarla");
- 	 	window.history.back();
-
- 	 	//window.("ProyectoHorario.html", "_parent");
-
-
-  }
- }
 
 
